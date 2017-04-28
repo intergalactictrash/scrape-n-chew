@@ -2,7 +2,7 @@
 
 from lxml import html
 import requests
-
+from time import *
 from blockchain import statistics
 
 sts = statistics.get()
@@ -31,7 +31,7 @@ print "blocks mined: ", blockmine
 blocksize=sts.blocks_size
 print "bocksize: ", blocksize
 fees=sts.total_fees_btc
-print "percent of miner revenue from fees: ", fees
+print "total fees (btc): ", fees
 btcsent=sts.total_btc_sent
 print "total sent btc: ", btcsent
 estbtcsent=sts.estimated_btc_sent 
@@ -46,7 +46,31 @@ volusd=sts.estimated_transaction_volume_usd
 print "estimated transaction volume (usd): ", volusd
 minerrevbtc=sts.miners_revenue_btc  
 print "miner revenue (btc): ", minerrevbtc
-btcprice=sts.market_price_usd 
-print "btc price (usd): ", btcprice
+price=sts.market_price_usd 
+print "btc price (usd): ", price
+
+
+tvbl = []
+pricel = []
+for i in range(0, 3):
+	tvbl.append(tvb)
+	pricel.append(price)
+	avgtvb = sum(tvbl)/len(tvbl)
+	avgprice = sum(pricel)/len(pricel)
+	sleep(2)
+print tvbl
+print "average", avgtvb
+
+
+for i in range(0, len(tvbl)):
+	x = tvbl[i] - avgtvb
+	y = pricel[i] - avgprice
+print x
+print y
+
+
+
+
+
 
 
