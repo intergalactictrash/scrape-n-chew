@@ -4,50 +4,53 @@ from lxml import html
 import requests
 from time import *
 from blockchain import statistics
+import math
+
 
 sts = statistics.get()
-mine=sts.mined_blocks
-print "mined blocks: ", mine
-tvb=sts.trade_volume_btc 
-print "trade vlovume (btc): ", tvb
-minerrevusd=sts.miners_revenue_usd 
-print "Miner revenue (usd): ", minerrevusd
-btcmine=sts.btc_mined
-print "btc mined: ", btcmine
-tvusd=sts.trade_volume_usd
-print "volume traded (usd): ", tvusd 
-diff=sts.difficulty
-print "difficulty: ", diff
-blocktime=sts.minutes_between_blocks
-print "minutes between blocks: ", blocktime 
-transnum=sts.number_of_transactions
-print "number of transactions: ", transnum 
-hashrate=sts.hash_rate
-print "hashrate: ", hashrate
-time=sts.timestamp
-print "timestamp: ", time
-blockmine=sts.mined_blocks
-print "blocks mined: ", blockmine
-blocksize=sts.blocks_size
-print "bocksize: ", blocksize
-fees=sts.total_fees_btc
-print "total fees (btc): ", fees
-btcsent=sts.total_btc_sent
-print "total sent btc: ", btcsent
-estbtcsent=sts.estimated_btc_sent 
-print "estemated sent btc: ", estbtcsent
-totbtc=sts.total_btc 
-print "btc in circulation: ", totbtc
-totblocks=sts.total_blocks
-print "total number of blocks: ", totblocks
-retarg=sts.next_retarget
-print  "next retarget: ", retarg
-volusd=sts.estimated_transaction_volume_usd
-print "estimated transaction volume (usd): ", volusd
-minerrevbtc=sts.miners_revenue_btc  
-print "miner revenue (btc): ", minerrevbtc
-price=sts.market_price_usd 
+
+mine = sts.mined_blocks
+tvb = sts.trade_volume_btc 
+minerrevusd = sts.miners_revenue_usd 
+btcmine = sts.btc_mined
+tvusd = sts.trade_volume_usd
+diff = sts.difficulty
+blocktime = sts.minutes_between_blocks
+transnum = sts.number_of_transactions
+hashrate = sts.hash_rate
+time = sts.timestamp
+blockmine = sts.mined_blocks
+blocksize = sts.blocks_size
+fees = sts.total_fees_btc
+btcsent = sts.total_btc_sent
+estbtcsent = sts.estimated_btc_sent 
+totbtc = sts.total_btc 
+totblocks = sts.total_blocks
+retarg = sts.next_retarget
+volusd = sts.estimated_transaction_volume_usd
+minerrevbtc = sts.miners_revenue_btc  
+price = sts.market_price_usd 
 print "btc price (usd): ", price
+print "mined blocks: ", mine
+print "trade vlovume (btc): ", tvb
+print "Miner revenue (usd): ", minerrevusd
+print "btc mined: ", btcmine
+print "volume traded (usd): ", tvusd 
+print "difficulty: ", diff
+print "minutes between blocks: ", blocktime 
+print "number of transactions: ", transnum 
+print "hashrate: ", hashrate
+print "timestamp: ", time
+print "blocks mined: ", blockmine
+print "bocksize: ", blocksize
+print "total fees (btc): ", fees
+print "total sent btc: ", btcsent
+print "estemated sent btc: ", estbtcsent
+print "btc in circulation: ", totbtc
+print "total number of blocks: ", totblocks
+print  "next retarget: ", retarg
+print "estimated transaction volume (usd): ", volusd
+print "miner revenue (btc): ", minerrevbtc
 
 
 tvbl = []
@@ -61,12 +64,32 @@ for i in range(0, 3):
 print tvbl
 print "average", avgtvb
 
-
+sqxtvbl = []
+sqyl = []
+numeratorl = []
 for i in range(0, len(tvbl)):
-	x = tvbl[i] - avgtvb
+	xtvb = tvbl[i] - avgtvb
+	print xtvb
 	y = pricel[i] - avgprice
-print x
-print y
+	print y
+	sqxtvb = xtvb**2
+	sqxtvbl.append(sqxtvb)
+	sqy = y**2
+	sqyl.append(sqy)
+	numerator = xtvb * y
+	numeratorl.append(numerator)
+	print "numerator of 'r': ", numerator
+print "out: ", xtvb
+print "out: ", y
+rtop = sum(numeratorl)
+print "numberator after summation: ", rtop
+denominator = math.sqrt(sum(sqxtvbl)) * math.sqrt(sum(sqyl))
+print "denominator: ", denominator
+
+#correlation = rtop/denominator
+
+
+
 
 
 
