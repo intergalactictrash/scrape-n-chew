@@ -98,6 +98,24 @@ for i in range(0, 3):
 
 	pricel.append(price)
 	avgtvb = sum(tvbl)/len(tvbl)
+	avgmine = sum(minel)/len(tvbl)
+	avgminerrevusd = sum(minerrevusdl)/len(tvbl)
+	avgbtcmine = sum(btcminel)/len(tvbl)
+	avgdiff = sum(diffl)/len(tvbl)
+	avgblocktime = sum(blocktimel)/len(tvbl)
+	avgtransnum = sum(transnuml)/len(tvbl)
+	avghashrate = sum(hashratel)/len(tvbl)
+	avgtime = sum(timel)/len(tvbl)
+	avgblockmine = sum(blockminel)/len(tvbl)
+	avgfees = sum(feesl)/len(tvbl)
+	avgbtcsent = sum(btcsentl)/len(tvbl)
+	avgestbtcsent = sum(estbtcsentl)/len(tvbl)
+	avgtotbtc = sum(totbtcl)/len(tvbl)
+	avgtotblocks = sum(totblocksl)/len(tvbl)
+	avgretarg = sum(retargl)/len(tvbl)
+	avgvolusd = sum(volusdl)/len(tvbl)
+	avgminerrevbtc = sum(minerrevbtcl)/len(tvbl)
+
 	avgprice = sum(pricel)/len(pricel)
 	sleep(2)
 print tvbl
@@ -126,13 +144,3 @@ denominator = math.sqrt(sum(sqxtvbl)) * math.sqrt(sum(sqyl))
 print "denominator: ", denominator
 
 #correlation = rtop/denominator
-
-
-
-
-
-
-
-
-
-

@@ -75,64 +75,53 @@ retargl = []
 volusdl = []
 minerrevbtcl = []
 
+class correlation:
 
-for i in range(0, 3):
-	tvbl.append(tvb)
-	minel.append(mine)
-	minerrevusdl.append(minerrevusd)
-	btcminel.append(btcmine)
-	diffl.append(diff)
-	blocktimel.append(blocktime)
-	transnuml.append(transnum)
-	hashratel.append(hashrate)
-	timel.append(time)
-	blockminel.append(blockmine)
-	feesl.append(fees)
-	btcsentl.append(btcsent)
-	estbtcsentl.append(estbtcsent)
-	totbtcl.append(totbtc)
-	totblocksl.append(totblocks)
-	retargl.append(retarg)
-	volusdl.append(volusd)
-	minerrevbtcl.append(minerrevbtc)
+	def __init__(self, v, vlist):
+		self.v = v
+		self.vlist = []
+		self.sqxvlist = []
 
-	pricel.append(price)
-	avgtvb = sum(tvbl)/len(tvbl)
-	avgprice = sum(pricel)/len(pricel)
-	sleep(2)
-print tvbl
-print "average", avgtvb
+	def average(self):
+		for i in range(0, 3):
+			self.vlist.append(self.v)
+			pricel.append(price)
+			avgv = sum(self.vlist)/len(self.vlist)
+			avgprice = sum(pricel)/len(pricel)
+			sleep(2)
+		print self.vlist
+		print "average", avgv
+		self.avgv = avgv
+		self.avgprice = avgprice
+		return avgv
+		return avgprice
 
-sqxtvbl = []
-sqyl = []
-numeratorl = []
-for i in range(0, len(tvbl)):
-	xtvb = tvbl[i] - avgtvb
-	print xtvb
-	y = pricel[i] - avgprice
-	print y
-	sqxtvb = xtvb**2
-	sqxtvbl.append(sqxtvb)
-	sqy = y**2
-	sqyl.append(sqy)
-	numerator = xtvb * y
-	numeratorl.append(numerator)
-	print "numerator of 'r': ", numerator
-print "out: ", xtvb
-print "out: ", y
-rtop = sum(numeratorl)
-print "numberator after summation: ", rtop
-denominator = math.sqrt(sum(sqxtvbl)) * math.sqrt(sum(sqyl))
-print "denominator: ", denominator
+	def formula(self):
+		self.sqyl = []
+		self.numeratorl = []
+		for i in range(0, len(self.vlist)):
+			self.xv = self.vlist[i] - self.avgv
+			print self.xv
+			self.y = pricel[i] - self.avgprice
+			print self.y
+			self.sqxv = self.xv**2
+			self.sqxvlist.append(self.sqxv)
+			self.sqy = self.y**2
+			self.sqyl.append(self.sqy)
+			self.numerator = self.xv * self.y
+			self.numeratorl.append(self.numerator)
+			print "numerator of 'r': ", self.numerator
+		print "out: ", self.xv
+		print "out: ", self.y
+		self.rtop = sum(self.numeratorl)
+		print "numberator after summation: ", self.rtop
+		self.denominator = math.sqrt(sum(self.sqxvlist)) * math.sqrt(sum(self.sqyl))
+		print "denominator: ", self.denominator
 
-#correlation = rtop/denominator
+		#correlation = rtop/denominator
 
-
-
-
-
-
-
-
+hh= correlation(tvb, tvbl)
+hh.average()
+hh.formula()
 
 
